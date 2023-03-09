@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BookApp.Models.Book>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1 class="text-center text-primary">Book Record</h1>
+            <a class="btn btn-sm btn-success m-1" asp-controller="Book" asp-action="AddBook">Add New Book</a>
+            <table class="table table-bordered">
+                <tr class="text-center">
+                    <th>BookId</th>
+                    <th>BookName</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+                @foreach (var d in Model)
+                {
+                    <tr class="text-center">
+                        <td>@d.bookId</td>
+                        <td>@d.bookName</td>
+                        <td>@d.author</td>
+                        <td>@d.price</td>
+                        <td>
+                            <a class="btn btn-sm btn-warning" asp-controller="Book" asp-action="UpdateBook" asp-route-id="@d.bookId">Update Book</a>
+                            <a class="btn btn-sm btn-danger" asp-controller="Book" asp-action="DeleteBook" asp-route-id="@d.bookId">Delete Book</a>
+
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </div>
+    </div>
+</div>
